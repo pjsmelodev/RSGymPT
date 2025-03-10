@@ -3,10 +3,10 @@
     //<summary>
     //Utility class for common functions.
     //</summary>
-    class Utilities
+    public class Utilities
     {
         //<summary>
-        //Pauses the terminal untill a key is pressed.
+        //Pauses the terminal until a key is pressed.
         //This is useful to prevent the console from closing immediately.
         //</summary>
         public static void PauseTerminal()
@@ -21,13 +21,13 @@
         //<param name="title">The title to be printed.</param>
         public static void PrintTitle(string title)
         {
-            int lineLength = title.Length;
+            int lineLength = title.Length + 4;
 
-            // TODO: não sei se vou ter de tirar esta linha
+            //TODO: não sei se vou ter de tirar esta linha
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(new string('=', lineLength));
-            Console.WriteLine(title.ToUpper());
+            Console.WriteLine($"  {title.ToUpper()  }");
             Console.WriteLine(new string('=', lineLength));
             Console.ResetColor();
             Console.WriteLine();
