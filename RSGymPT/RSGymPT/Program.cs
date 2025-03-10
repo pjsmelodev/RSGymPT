@@ -1,4 +1,4 @@
-﻿using System;
+﻿using RSGymPT.Utils;
 
 namespace RSGymPT
 {
@@ -6,7 +6,9 @@ namespace RSGymPT
 	{
 		public static void Main(string[] args)
 		{
+			
 
-		}
+            Utilities.PauseTerminal();
+        }
 	}
 }

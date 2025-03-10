@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RSGymPT.Utils
+﻿namespace RSGymPT.Utils
 {
     //<summary>
     //Utility class for common functions.
@@ -13,6 +7,7 @@ namespace RSGymPT.Utils
     {
         //<summary>
         //Pauses the terminal untill a key is pressed.
+        //This is useful to prevent the console from closing immediately.
         //</summary>
         public static void PauseTerminal()
         {
