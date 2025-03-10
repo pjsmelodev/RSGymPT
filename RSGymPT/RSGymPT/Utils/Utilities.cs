@@ -15,6 +15,22 @@
             Console.ReadKey(true);
         }
 
+        //<summary>
+        //Prints a formated title to the console.
+        //</summary>
+        //<param name="title">The title to be printed.</param>
+        public static void PrintTitle(string title)
+        {
+            int lineLength = title.Length;
 
+            // TODO: não sei se vou ter de tirar esta linha
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(new string('=', lineLength));
+            Console.WriteLine(title.ToUpper());
+            Console.WriteLine(new string('=', lineLength));
+            Console.ResetColor();
+            Console.WriteLine();
+        }
     }
 }
