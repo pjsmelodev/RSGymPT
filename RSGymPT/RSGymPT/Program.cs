@@ -7,7 +7,8 @@ namespace RSGymPT
     {
         static void Main(string[] args)
         {
-            LoginMenu.ShowLoginMenu();
+            //LoginMenu.ShowLoginMenu();
+            MainMenu.ShowMainMenu();
             Helpers.PauseConsole();
         }
     }

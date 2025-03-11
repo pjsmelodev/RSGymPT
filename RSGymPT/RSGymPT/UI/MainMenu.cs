@@ -14,6 +14,8 @@ namespace RSGymPT.UI
         {
             while (true)
             {
+                Console.Clear();
+
                 Helpers.PrintTitle("RSGymPT - Main Menu");
                 Console.WriteLine();
                 Console.WriteLine("1. Request");
@@ -38,11 +40,12 @@ namespace RSGymPT.UI
                         break;
                     case "0":
                         Console.WriteLine("Exiting...");
+                        Helpers.PauseConsole();
                         LoginMenu.ShowLoginMenu();
                         return;
                     default:
                         Console.WriteLine("Invalid option. Try again.");
-                        Console.Clear();
+                        Helpers.PauseConsole();
                         break;
                 }
             }
