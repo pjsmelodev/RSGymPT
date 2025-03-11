@@ -12,9 +12,7 @@ namespace RSGymPT.UI
         //</summary>
         public static void ShowRequestMenu()
         {
-            bool exitMenu = false;
-
-            while (!exitMenu)
+            while (true)
             {
                 Helpers.PrintTitle("RSGymPT - Request Menu");
                 Console.WriteLine();
@@ -55,10 +53,8 @@ namespace RSGymPT.UI
                         break;
                     case "0":
                         Console.WriteLine("Exiting...");
-                        exitMenu = true;
-                        Helpers.PauseConsole();
-                        // TODO: voltar para o main menu
-                        break;
+                        MainMenu.ShowMainMenu();
+                        return;
                     default:
                         Console.WriteLine("Invalid option. Try again.");
                         Console.Clear();

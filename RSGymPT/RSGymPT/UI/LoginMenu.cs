@@ -12,9 +12,7 @@ namespace RSGymPT.UI
         //</summary>
         public static void ShowLoginMenu()
         {
-            bool exitMenu = false;
-
-            while (!exitMenu)
+            while (true)
             {
                 Helpers.PrintTitle("RSGymPT - Login Menu");
                 Console.WriteLine();
@@ -31,8 +29,8 @@ namespace RSGymPT.UI
                         break;
                     case "0":
                         Console.WriteLine("Exiting...");
-                        exitMenu = true;
                         Helpers.PauseConsole(); 
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid option. Try again.");
