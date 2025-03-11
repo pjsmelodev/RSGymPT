@@ -2,8 +2,14 @@
 
 namespace RSGymPT.UI
 {
+    //<summary>
+    //This class contains the methods to display the login menu.
+    //</summary>
     public class LoginMenu
     {
+        //<summary>
+        //This method displays the login menu.
+        //</summary>
         public static void ShowLoginMenu()
         {
             bool exitMenu = false;
@@ -26,9 +32,10 @@ namespace RSGymPT.UI
                     case "0":
                         Console.WriteLine("Exiting...");
                         exitMenu = true;
+                        Helpers.PauseConsole(); 
                         break;
                     default:
-                        Console.WriteLine("Invalid option. Try again. [1, 2]");
+                        Console.WriteLine("Invalid option. Try again.");
                         Console.Clear();
                         break;
                 }
