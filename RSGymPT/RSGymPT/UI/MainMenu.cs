@@ -32,11 +32,11 @@ namespace RSGymPT.UI
                         break;
                     case "2":
                         Console.Clear();
-                        // TODO: implementar a logica
+                        PTMenu.ShowPTMenu();
                         break;
                     case "3":
                         Console.Clear();
-                        // TODO: implementar a logica
+                        UserMenu.ShowUserMenu();
                         break;
                     case "0":
                         Console.WriteLine("Exiting...");
