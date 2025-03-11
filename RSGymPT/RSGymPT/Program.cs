@@ -1,4 +1,5 @@
 ﻿using RSGymPT.Utils;
+using RSGymPT.UI;
 
 namespace RSGymPT
 {
@@ -6,6 +7,7 @@ namespace RSGymPT
     {
         static void Main(string[] args)
         {
+            LoginMenu.ShowLoginMenu();
             Helpers.PauseConsole();
         }
     }
