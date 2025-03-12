@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "Name": "Carlos Mendes",
+    "Phone": "912345678",
+    "Code": "PT001"
+  },
+  {
+    "Id": 2,
+    "Name": "Maria Rocha",
+    "Phone": "923456789",
+    "Code": "PT002"
+  },
+  {
+    "Id": 3,
+    "Name": "José Santos",
+    "Phone": "934567890",
+    "Code": "PT003"
+  }
+]
