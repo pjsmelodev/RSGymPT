@@ -1,5 +1,6 @@
 ﻿using RSGymPT.Utils;
 using RSGymPT.UI;
+using RSGymPT.Data;
 
 namespace RSGymPT
 {
@@ -14,6 +15,10 @@ namespace RSGymPT
         //<param name="args">The arguments passed to the application (not used).</param>
         static void Main(string[] args)
         {
+            SeedData.Initialize();
+            Console.WriteLine("Seed data initialized.");
+            Helpers.PauseConsole();
+
             //LoginMenu.ShowLoginMenu();
             MainMenu.ShowMainMenu();
             Helpers.PauseConsole();
