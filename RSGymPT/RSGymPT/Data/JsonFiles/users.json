@@ -3,14 +3,14 @@
     "Id": 1,
     "Name": "João Silva",
     "BirthDate": "1992-05-14",
-    "Code": "USR01",
+    "UserCode": "USR01",
     "Password": "seguranca123"
   },
   {
     "Id": 2,
     "Name": "Ana Ferreira",
     "BirthDate": "1987-11-22",
-    "Code": "USR02",
+    "UserCode": "USR02",
     "Password": "senhaforte12"
   }
 ]
