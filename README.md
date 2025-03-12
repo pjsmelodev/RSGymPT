@@ -47,7 +47,6 @@ The project follows an organized structure to separate concerns and ensure maint
     - PersonalTrainerMenu.cs
     - UserMenu.cs
   - Utils/
-    - Constants.cs
     - Helpers.cs
   - Program.cs
   - RSGymPT.sln
