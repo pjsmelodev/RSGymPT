@@ -1,19 +1,19 @@
 [
   {
-    "Id": 1,
-    "Name": "Carlos Mendes",
+    "PTId": 1,
+    "PTName": "Carlos Mendes",
     "Phone": "912345678",
     "PTCode": "PT001"
   },
   {
-    "Id": 2,
-    "Name": "Maria Rocha",
+    "PTId": 2,
+    "PTName": "Maria Rocha",
     "Phone": "923456789",
     "PTCode": "PT002"
   },
   {
-    "Id": 3,
-    "Name": "José Santos",
+    "PTId": 3,
+    "PTName": "José Santos",
     "Phone": "934567890",
     "PTCode": "PT003"
   }

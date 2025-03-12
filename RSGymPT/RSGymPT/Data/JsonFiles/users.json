@@ -1,14 +1,14 @@
 [
   {
-    "Id": 1,
-    "Name": "João Silva",
+    "UserId": 1,
+    "UserName": "João Silva",
     "BirthDate": "1992-05-14",
     "UserCode": "USR01",
     "Password": "seguranca123"
   },
   {
-    "Id": 2,
-    "Name": "Ana Ferreira",
+    "UserId": 2,
+    "UserName": "Ana Ferreira",
     "BirthDate": "1987-11-22",
     "UserCode": "USR02",
     "Password": "senhaforte12"
