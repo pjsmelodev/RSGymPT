@@ -1,4 +1,5 @@
-﻿using RSGymPT.Utils;
+﻿using RSGymPT.Services;
+using RSGymPT.Utils;
 
 namespace RSGymPT.UI
 {
@@ -16,7 +17,14 @@ namespace RSGymPT.UI
             {
                 Console.Clear();
 
-                Helpers.PrintTitle("RSGymPT - Request Menu");
+                if (AuthService.LoggedUser != null)
+                {
+                    Helpers.PrintTitle($"RSGymPT - Request Menu - {AuthService.LoggedUser.UserName}");
+                }
+                else
+                {
+                    Helpers.PrintTitle("RSGymPT - Request Menu");
+                }
                 Console.WriteLine();
                 Console.WriteLine("1. Register a new request");
                 Console.WriteLine("2. Alter a request");
@@ -54,12 +62,12 @@ namespace RSGymPT.UI
                         Helpers.PauseConsole();
                         break;
                     case "0":
-                        Console.WriteLine("Exiting...");
+                        Console.WriteLine("\nExiting...");
                         Helpers.PauseConsole();
                         MainMenu.ShowMainMenu();
                         return;
                     default:
-                        Console.WriteLine("Invalid option. Try again.");
+                        Console.WriteLine("\nInvalid option. Try again.");
                         Helpers.PauseConsole();
                         break;
                 }

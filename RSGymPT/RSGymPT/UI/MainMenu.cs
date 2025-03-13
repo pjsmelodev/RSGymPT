@@ -19,7 +19,7 @@ namespace RSGymPT.UI
 
                 if (AuthService.LoggedUser != null)
                 {
-                    Helpers.PrintTitle($"RSGymPT - Login Menu - {AuthService.LoggedUser.UserName}");
+                    Helpers.PrintTitle($"RSGymPT - Main Menu - {AuthService.LoggedUser.UserName}");
                 }
                 else
                 {

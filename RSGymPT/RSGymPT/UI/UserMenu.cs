@@ -1,4 +1,5 @@
-﻿using RSGymPT.Utils;
+﻿using RSGymPT.Services;
+using RSGymPT.Utils;
 
 namespace RSGymPT.UI
 {
@@ -16,7 +17,15 @@ namespace RSGymPT.UI
             {
                 Console.Clear();
 
-                Helpers.PrintTitle("RSGymPT - User Menu");
+
+                if (AuthService.LoggedUser != null)
+                {
+                    Helpers.PrintTitle($"RSGymPT - User Menu - {AuthService.LoggedUser.UserName}");
+                }
+                else
+                {
+                    Helpers.PrintTitle("RSGymPT - User Menu");
+                }
                 Console.WriteLine();
                 Console.WriteLine("1. List all users");
                 Console.WriteLine("0. Exit");
