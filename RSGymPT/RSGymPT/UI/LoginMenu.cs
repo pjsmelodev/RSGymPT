@@ -21,15 +21,7 @@ namespace RSGymPT.UI
             {
                 Console.Clear();
 
-                if (AuthService.LoggedUser != null)
-                {
-                    Helpers.PrintTitle($"RSGymPT - Login Menu - {AuthService.LoggedUser.UserName}");
-                }
-                else
-                {
-                    Helpers.PrintTitle("RSGymPT - Login Menu");
-                }
-
+                Helpers.PrintTitle("RSGymPT - Login Menu");
                 Console.WriteLine();
                 Console.WriteLine("1. Login");
                 Console.WriteLine("0. Exit");
@@ -42,7 +34,7 @@ namespace RSGymPT.UI
                         Console.Write("User name: ");
                         string userName = Console.ReadLine() ?? "";
                         Console.Write("Password: ");
-                        string password = Console.ReadLine() ?? "";
+                        string password = Helpers.HidePassword();
 
                         if (AuthService.Login(userName, password))
                         {
