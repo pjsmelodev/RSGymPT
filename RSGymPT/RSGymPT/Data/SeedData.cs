@@ -25,6 +25,7 @@ namespace RSGymPT.Data
 
             PersonalTrainers = LoadData<PersonalTrainer>(PersonalTrainersPath);
             Console.WriteLine($"Loaded {PersonalTrainers.Count} personal trainers from {PersonalTrainersPath}.");
+            Console.WriteLine();
         }
 
         //<summary>

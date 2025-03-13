@@ -21,7 +21,15 @@ namespace RSGymPT.UI
             {
                 Console.Clear();
 
-                Helpers.PrintTitle("RSGymPT - Login Menu");
+                if (AuthService.LoggedUser != null)
+                {
+                    Helpers.PrintTitle($"RSGymPT - Login Menu - {AuthService.LoggedUser.UserName}");
+                }
+                else
+                {
+                    Helpers.PrintTitle("RSGymPT - Login Menu");
+                }
+
                 Console.WriteLine();
                 Console.WriteLine("1. Login");
                 Console.WriteLine("0. Exit");
@@ -38,7 +46,7 @@ namespace RSGymPT.UI
 
                         if (AuthService.Login(userName, password))
                         {
-                            Console.WriteLine($"Welcome, {AuthService.LoggedUser?.UserName}!");
+                            Console.WriteLine($"\nWelcome, {AuthService.LoggedUser?.UserName}!");
                             Helpers.PauseConsole();
                             MainMenu.ShowMainMenu();
                             failedAttempts = 0;
@@ -46,24 +54,25 @@ namespace RSGymPT.UI
                         else
                         {
                             failedAttempts++;
-                            Console.WriteLine("Invalid credentials. Please try again.");
+                            int attemptsLeft = MaxAttempts - failedAttempts;
+                            Console.WriteLine($"\nInvalid credentials.\n{attemptsLeft} attempts left.");
                             Helpers.PauseConsole();
 
                             if (failedAttempts >= MaxAttempts)
                             {
-                                Console.WriteLine("Too many failed attempts. Access blocked");
+                                Console.WriteLine("\nToo many failed attempts. Access blocked");
                                 Helpers.PauseConsole();
                                 Environment.Exit(0);
                             }
                         }
                         break;
                     case "0":
-                        Console.WriteLine("Exiting...");
+                        Console.WriteLine("\nExiting...");
                         Helpers.PauseConsole(); 
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Invalid option. Try again.");
+                        Console.WriteLine("\nInvalid option. Try again.");
                         Helpers.PauseConsole();
                         break;
                 }
