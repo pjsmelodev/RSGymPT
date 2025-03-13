@@ -38,12 +38,12 @@ namespace RSGymPT.UI
                         // TODO: implementar logica
                         break;
                     case "0":
-                        Console.WriteLine("Exiting...");
+                        Console.WriteLine("\nExiting...");
                         Helpers.PauseConsole();
                         LoginMenu.ShowLoginMenu();
                         return;
                     default:
-                        Console.WriteLine("Invalid option. Try again.");
+                        Console.WriteLine("\nInvalid option. Try again.");
                         Helpers.PauseConsole();
                         break;
                 }
