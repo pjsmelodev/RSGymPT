@@ -51,11 +51,13 @@ namespace RSGymPT.UI
                                 Console.WriteLine("\nNo personal trainer found with the provided code.");
                             }
                         }
+                        Console.WriteLine();
                         Helpers.PauseConsole();
                         break;
                     case "2":
                         Console.Clear();
                         Services.PersonalTrainerService.ListPTs().ForEach(pt => Console.WriteLine($"\nID: {pt.PTId}\nName: {pt.PTName}\nPhone: {pt.Phone}\nCode: {pt.PTCode}"));
+                        Console.WriteLine();
                         Helpers.PauseConsole();
                         break;
                     case "0":
