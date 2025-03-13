@@ -21,7 +21,7 @@ namespace RSGymPT
 
             /*
              * LOGINS:
-             * UserName": "João Silva" -> "Password": "seguranca123"
+             * UserName": "Joao Silva" -> "Password": "seguranca123"
              * "UserName": "Ana Ferreira" -> "Password": "senhaforte12"
             */
 

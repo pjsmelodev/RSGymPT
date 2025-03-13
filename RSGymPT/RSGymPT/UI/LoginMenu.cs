@@ -60,7 +60,7 @@ namespace RSGymPT.UI
 
                             if (failedAttempts >= MaxAttempts)
                             {
-                                Console.WriteLine("\nToo many failed attempts. Access blocked");
+                                Console.WriteLine("\nToo many failed attempts. Access blocked.");
                                 Helpers.PauseConsole();
                                 Environment.Exit(0);
                             }
