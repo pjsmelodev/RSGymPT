@@ -11,17 +11,20 @@ namespace RSGymPT.Data
         private static readonly string UsersPath = "Data/JsonFiles/users.json";
         private static readonly string PersonalTrainersPath = "Data/JsonFiles/personal_trainers.json";
 
+        public static List<User> Users { get; private set; } = new List<User>();
+        public static List<PersonalTrainer> PersonalTrainers { get; private set; } = new List<PersonalTrainer>();
+
         //<summary>
         //This method initializes the seed data.
         //If the files are missing, an exception is thrown.
         //</summary>
         public static void Initialize()
         {
-            var users = LoadData<User>(UsersPath);
-            Console.WriteLine($"Loaded {users.Count} users from {UsersPath}.");
+            Users = LoadData<User>(UsersPath);
+            Console.WriteLine($"Loaded {Users.Count} users from {UsersPath}.");
 
-            var personalTrainers = LoadData<PersonalTrainer>(PersonalTrainersPath);
-            Console.WriteLine($"Loaded {personalTrainers.Count} personal trainers from {PersonalTrainersPath}.");
+            PersonalTrainers = LoadData<PersonalTrainer>(PersonalTrainersPath);
+            Console.WriteLine($"Loaded {PersonalTrainers.Count} personal trainers from {PersonalTrainersPath}.");
         }
 
         //<summary>
