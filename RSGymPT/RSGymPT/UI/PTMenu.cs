@@ -32,12 +32,30 @@ namespace RSGymPT.UI
                 {
                     case "1":
                         Console.Clear();
-                        // TODO: implementar logica
+                        Console.Write("Enter the personal trainer code: ");
+                        string code = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(code))
+                        {
+                            Console.WriteLine("\nError: The personal trainer code cannot be null or empty.");
+                        }
+                        else
+                        {
+                            var pt = Services.PersonalTrainerService.SearchPTByCode(code);
+                            if (pt != null)
+                            {
+                                Console.WriteLine($"\nPersonal Trainer Found:\nID: {pt.PTId}\nName: {pt.PTName}\nPhone: {pt.Phone}\nCode: {pt.PTCode}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nNo personal trainer found with the provided code.");
+                            }
+                        }
                         Helpers.PauseConsole();
                         break;
                     case "2":
                         Console.Clear();
-                        // TODO: implementar logica
+                        Services.PersonalTrainerService.ListPTs().ForEach(pt => Console.WriteLine($"\nID: {pt.PTId}\nName: {pt.PTName}\nPhone: {pt.Phone}\nCode: {pt.PTCode}"));
                         Helpers.PauseConsole();
                         break;
                     case "0":
