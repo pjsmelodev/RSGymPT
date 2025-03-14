@@ -35,6 +35,7 @@ namespace RSGymPT.Services
         //</summary>
         public static void Logout()
         {
+            Console.WriteLine($"User {loggedUser?.UserName} logged out at {DateTime.Now}.");
             loggedUser = null;
         }
     }

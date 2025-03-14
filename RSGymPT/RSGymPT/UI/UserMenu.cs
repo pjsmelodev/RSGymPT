@@ -35,7 +35,22 @@ namespace RSGymPT.UI
                 {
                     case "1":
                         Console.Clear();
-                        // TODO: implementar logica
+                        var users = UserService.ListUserNoPass();
+
+                        if (users.Any())
+                        {
+                            Console.WriteLine("Registered Users:");
+                            foreach (var user in users)
+                            {
+                                Console.WriteLine($"ID: {user.UserId} | Name: {user.UserName} | Birthdate: {user.BirthDate:yyyy-MM-dd} | Code: {user.UserCode}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nNo users found.");
+                        }
+                        Console.WriteLine();
+                        Helpers.PauseConsole();
                         break;
                     case "0":
                         Console.WriteLine("\nExiting...");

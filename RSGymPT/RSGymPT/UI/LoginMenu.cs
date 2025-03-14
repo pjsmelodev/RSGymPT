@@ -48,6 +48,7 @@ namespace RSGymPT.UI
                             failedAttempts++;
                             int attemptsLeft = MaxAttempts - failedAttempts;
                             Console.WriteLine($"\nInvalid credentials.\n{attemptsLeft} attempts left.");
+                            Console.WriteLine();
                             Helpers.PauseConsole();
 
                             if (failedAttempts >= MaxAttempts)
