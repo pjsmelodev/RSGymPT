@@ -9,7 +9,7 @@ namespace RSGymPT.Services
     public static class RequestService
     {
         private static readonly string RequestsPath = "Data/JsonFiles/requests.json";
-        private static int _nextRequestId = 1; // To auto-generate unique Request IDs
+        private static int _nextRequestId = 1; 
         public static List<Request> Requests { get; private set; } = new List<Request>();
 
         //<summary>
@@ -70,6 +70,7 @@ namespace RSGymPT.Services
         //</summary>
         public static List<Request> GetUserRequests(string userCode)
         {
+            EnsureRequestsExist(); // Verifica se há requests
             return Requests
                 .Where(r => r.UserCode == userCode)
                 .ToList();
@@ -80,8 +81,9 @@ namespace RSGymPT.Services
         //</summary>
         public static bool ModifyRequest(int requestId, DateTime newScheduleDate)
         {
-            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
+            EnsureRequestsExist();
 
+            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
             if (request == null)
                 throw new InvalidOperationException($"Request with ID {requestId} not found.");
 
@@ -101,8 +103,9 @@ namespace RSGymPT.Services
         //</summary>
         public static bool DeleteRequest(int requestId)
         {
-            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
+            EnsureRequestsExist();
 
+            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
             if (request == null)
                 throw new InvalidOperationException($"Request with ID {requestId} not found.");
 
@@ -119,8 +122,9 @@ namespace RSGymPT.Services
         //</summary>
         public static bool CompleteRequest(int requestId)
         {
-            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
+            EnsureRequestsExist();
 
+            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
             if (request == null)
                 throw new InvalidOperationException($"Request with ID {requestId} not found.");
 
@@ -138,8 +142,9 @@ namespace RSGymPT.Services
         //</summary>
         public static bool CancelRequest(int requestId, string reason)
         {
-            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
+            EnsureRequestsExist();
 
+            var request = Requests.FirstOrDefault(r => r.RequestId == requestId);
             if (request == null)
                 throw new InvalidOperationException($"Request with ID {requestId} not found.");
 
@@ -154,6 +159,17 @@ namespace RSGymPT.Services
             request.CompletionDate = DateTime.Now;
             SaveRequests();
             return true;
+        }
+
+        //<summary>
+        //Ensures there are requests available; throws an exception if none exist.
+        //</summary>
+        private static void EnsureRequestsExist()
+        {
+            if (Requests == null || !Requests.Any())
+            {
+                throw new InvalidOperationException("No requests found. Please create a new request first.");
+            }
         }
     }
 }

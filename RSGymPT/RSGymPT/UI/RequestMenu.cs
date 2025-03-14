@@ -1,5 +1,6 @@
 ﻿using RSGymPT.Services;
 using RSGymPT.Utils;
+using RSGymPT.Models;
 
 namespace RSGymPT.UI
 {
@@ -38,18 +39,22 @@ namespace RSGymPT.UI
                 {
                     case "1":
                         RegisterRequestFlow();
+                        RequestService.SaveRequests();
                         break;
                     case "2":
                         ModifyRequestFlow();
+                        RequestService.SaveRequests();
                         break;
                     case "3":
                         DeleteRequestFlow();
+                        RequestService.SaveRequests();
                         break;
                     case "4":
                         ListRequestsFlow();
                         break;
                     case "5":
                         CompleteRequestFlow();
+                        RequestService.SaveRequests();
                         break;
                     case "0":
                         Console.WriteLine("\nExiting...");
@@ -100,6 +105,13 @@ namespace RSGymPT.UI
             Console.Clear();
             try
             {
+                if (!RequestService.Requests.Any())
+                {
+                    Console.WriteLine("\nNo requests found. Please create a request first.");
+                    Helpers.PauseConsole();
+                    return;
+                }
+
                 Console.Write("Enter the request ID to modify: ");
                 if (!int.TryParse(Console.ReadLine(), out int requestId))
                 {
@@ -113,6 +125,8 @@ namespace RSGymPT.UI
                     Console.WriteLine("\nInvalid date format.");
                     return;
                 }
+
+                if (!ConfirmAction()) return;
 
                 if (RequestService.ModifyRequest(requestId, newScheduleDate))
                 {
@@ -134,12 +148,21 @@ namespace RSGymPT.UI
             Console.Clear();
             try
             {
+                if (!RequestService.Requests.Any())
+                {
+                    Console.WriteLine("\nNo requests found. Please create a request first.");
+                    Helpers.PauseConsole();
+                    return;
+                }
+
                 Console.Write("Enter the request ID to delete: ");
                 if (!int.TryParse(Console.ReadLine(), out int requestId))
                 {
                     Console.WriteLine("\nInvalid request ID.");
                     return;
                 }
+
+                if (!ConfirmAction()) return;
 
                 if (RequestService.DeleteRequest(requestId))
                 {
@@ -159,20 +182,28 @@ namespace RSGymPT.UI
         private static void ListRequestsFlow()
         {
             Console.Clear();
-            var requests = RequestService.GetUserRequests(AuthService.LoggedUser.UserCode);
-
-            if (requests.Any())
+            try
             {
-                Console.WriteLine("\nYour Requests:");
-                foreach (var request in requests)
+                var requests = RequestService.GetUserRequests(AuthService.LoggedUser.UserCode);
+
+                if (requests.Any())
                 {
-                    Console.WriteLine($"ID: {request.RequestId} | PT Code: {request.PTCode} | Date: {request.ScheduleDate:yyyy-MM-dd HH:mm} | Status: {request.Status}");
+                    Console.WriteLine("\nYour Requests:");
+                    foreach (var request in requests)
+                    {
+                        Console.WriteLine($"ID: {request.RequestId} | PT Code: {request.PTCode} | Date: {request.ScheduleDate:yyyy-MM-dd HH:mm} | Status: {request.Status}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nNo requests found.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("\nNo requests found.");
+                Console.WriteLine($"\nError: {ex.Message}");
             }
+            Console.WriteLine();
             Helpers.PauseConsole();
         }
 
@@ -184,12 +215,21 @@ namespace RSGymPT.UI
             Console.Clear();
             try
             {
+                if (!RequestService.Requests.Any())
+                {
+                    Console.WriteLine("\nNo requests found. Please create a request first.");
+                    Helpers.PauseConsole();
+                    return;
+                }
+
                 Console.Write("Enter the request ID to complete: ");
                 if (!int.TryParse(Console.ReadLine(), out int requestId))
                 {
                     Console.WriteLine("\nInvalid request ID.");
                     return;
                 }
+
+                if (!ConfirmAction()) return;
 
                 if (RequestService.CompleteRequest(requestId))
                 {
@@ -201,6 +241,23 @@ namespace RSGymPT.UI
                 Console.WriteLine($"\nError: {ex.Message}");
             }
             Helpers.PauseConsole();
+        }
+
+        //<summary>
+        //Asks the user to confirm an action.
+        //</summary>
+        private static bool ConfirmAction()
+        {
+            Console.Write("\nAre you sure you want to proceed? (s/S for yes, n/N for no): ");
+            var input = Console.ReadLine()?.ToLower();
+
+            while (input != "s" && input != "n")
+            {
+                Console.Write("Invalid input. Please enter 's' to confirm or 'n' to cancel: ");
+                input = Console.ReadLine()?.ToLower();
+            }
+
+            return input == "s";
         }
     }
 }
