@@ -8,7 +8,9 @@ namespace RSGymPT.Services
     //</summary>
     public static class RequestService
     {
-        private static readonly string RequestsPath = "Data/JsonFiles/requests.json";
+        //private static readonly string RequestsPath = "Data/JsonFiles/requests.json";
+        private static readonly string RequestsPath = @"C:\Users\pjsml\OneDrive\Documents\RSGymPT\RSGymPT\RSGymPT\Data\JsonFiles\requests.json";
+
         private static int _nextRequestId = 1; 
         public static List<Request> Requests { get; private set; } = new List<Request>();
 
