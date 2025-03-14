@@ -19,12 +19,6 @@ namespace RSGymPT
             Console.WriteLine("Seed data initialized.");
             Helpers.PauseConsole();
 
-            /*
-             * LOGINS:
-             * UserName": "Joao Silva" -> "Password": "seguranca123"
-             * "UserName": "Ana Ferreira" -> "Password": "senhaforte12"
-            */
-
             LoginMenu.ShowLoginMenu();
             Helpers.PauseConsole();
         }
